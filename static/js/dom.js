@@ -1,11 +1,18 @@
 // It uses data_handler.js to visualize elements
-dom = { 
-    showBoards: function() {
-        // loads and shows boards appending them to #boards div
+dom = {
+    loadBoards: function() {
+        dataHandler.init();
+        // retrieves boards and makes showBoards called
+    },
+    showBoards: function(boards) {
+        // shows boards appending them to #boards div
         // it adds necessary event listeners also
     },
-    showCards: function(boardId) {
-        // loads and shows the cards of a board
+    loadCards: function(boardId) {
+        // retrieves cards and makes showCards called
+    },
+    showCards: function(cards) {
+        // shows the cards of a board
         // it adds necessary event listeners also
     }
     // here comes more features

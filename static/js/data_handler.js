@@ -2,44 +2,44 @@
 // feel free to extend and change to fit your needs
 
 // (watch out: when you would like to use a property/function of an object from the
-// object itself then you must use the 'this' keyword before. For example: 'this.data' below)
+// object itself then you must use the 'this' keyword before. For example: 'this._data' below)
 dataHandler = {
-    data: {}, // it contains the boards and their cards and statuses
-    loadTestData: function() {
-        // uses sampleData from sample_data.js and puts it into the local storage
-        // it should be called only once on a test environment
-        // To use you have to import the sample_data.js file above this file in your html
+    keyInLocalStorage: 'proman-data', // the string that you use as a key in localStorage to save your application data
+    _data: {}, // it contains the boards and their cards and statuses. It is not called from outside.
+    _loadData: function() {
+        // it is not called from outside
+        // loads data from local storage, parses it and put into this._data property
     },
-    loadData: function() {
-        // loads data from local storage to this.data property
-        // this.data = ...
+    _saveData: function() {
+        // it is not called from outside
+        // saves the data from this._data to local storage
     },
-    saveData: function() {
-        // saves the data from this.data to local storage
+    init: function() {
+        this._loadData();
     },
-    getBoards: function() {
-        // returns the boards from this.data
+    getBoards: function(callback) {
+        // the boards are retrieved and then the callback function is called with the boards
     },
-    getBoard: function(boardId) {
-        // returns the board with the given id from this.data
+    getBoard: function(boardId, callback) {
+        // the board is retrieved and then the callback function is called with the board
     },
-    getStatuses: function() {
-        // returns the statuses from this.data
+    getStatuses: function(callback) {
+        // the statuses are retrieved and then the callback function is called with the statuses
     },
-    getStatus: function(statusId) {
-        // returns the status with the given id from this.data
+    getStatus: function(statusId, callback) {
+        // the status is retrieved and then the callback function is called with the status
     },
-    getCardsByBoardId: function(boardId) {
-        // returns the cards from this.data which has the given board id
+    getCardsByBoardId: function(boardId, callback) {
+        // the cards are retrieved and then the callback function is called with the cards
     },
-    getCard: function(cardId) {
-        // returns the card with the given id from this.data
+    getCard: function(cardId, callback) {
+        // the card is retrieved and then the callback function is called with the card
     },
-    createNewBoard: function(boardTitle) {
-        // creates new board, saves it and returns its id
+    createNewBoard: function(boardTitle, callback) {
+        // creates new board, saves it and calls the callback function with its data
     },
-    createNewCard: function(cardTitle, boardId, statusId) {
-        // creates new card for the given board, saves it and returns its id
+    createNewCard: function(cardTitle, boardId, statusId, callback) {
+        // creates new card, saves it and calls the callback function with its data
     }
     // here comes more features
-}
+};
