@@ -1,5 +1,5 @@
 // It uses data_handler.js to visualize elements
-dom = {
+let dom = {
     loadBoards: function() {
         // retrieves boards and makes showBoards called
     },
