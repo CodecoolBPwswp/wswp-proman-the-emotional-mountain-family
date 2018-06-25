@@ -1,5 +1,10 @@
 // It uses data_handler.js to visualize elements
-let dom = {
+import { dataHandler } from "./data_handler.js";
+
+export let dom = {
+    init: function() {
+        dataHandler.init();
+    },
     loadBoards: function() {
         // retrieves boards and makes showBoards called
     },
