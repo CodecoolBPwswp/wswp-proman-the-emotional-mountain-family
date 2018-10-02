@@ -2,15 +2,18 @@
 import { dataHandler } from "./data_handler.js";
 
 export let dom = {
+
     init: function() {
         dataHandler.init();
     },
     loadBoards: function() {
         // retrieves boards and makes showBoards called
+    dataHandler.getBoards(dom.showBoards);
     },
     showBoards: function(boards) {
         // shows boards appending them to #boards div
         // it adds necessary event listeners also
+        console.log(boards);
     },
     loadCards: function(boardId) {
         // retrieves cards and makes showCards called
