@@ -1,3 +1,4 @@
+import { upload } from "./sample_data.js";
 // this object contains the functions which handle the data and its reading/writing
 // feel free to extend and change to fit your needs
 
@@ -17,14 +18,20 @@ export let dataHandler = {
     },
     init: function() {
         this._loadData();
+        upload.uploadData()
     },
     getBoards: function(callback) {
         // the boards are retrieved and then the callback function is called with the boards
-    let boards = dataHandler._data.boards;
-    callback(boards);
+        let boards = dataHandler._data.boards;
+        callback(boards);
     },
     getBoard: function(boardId, callback) {
         // the board is retrieved and then the callback function is called with the board
+        let boards = dataHandler._data.boards;
+        for (let board of boards) {
+            if (boardId === board.id)
+                callback(board)
+        }
     },
     getStatuses: function(callback) {
         // the statuses are retrieved and then the callback function is called with the statuses
