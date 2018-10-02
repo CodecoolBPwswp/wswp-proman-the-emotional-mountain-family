@@ -13,7 +13,7 @@ export let dom = {
     showBoards: function(boards) {
         // shows boards appending them to #boards div
         // it adds necessary event listeners also
-        console.log(boards);
+        console.table(boards);
     },
     loadCards: function(boardId) {
         // retrieves cards and makes showCards called
