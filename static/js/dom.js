@@ -13,7 +13,13 @@ export let dom = {
     showBoards: function(boards) {
         // shows boards appending them to #boards div
         // it adds necessary event listeners also
-        console.table(boards);
+    let template = document.getElementById("boardTemplate").innerHTML;
+    let templateScript = Handlebars.compile(template);
+    for ()
+        let context = {"boardid" = "<div>board[i].id}<div>";
+        let html = templateScript(context);
+    document.getElementById("loadboard").innerHTML
+
     },
     loadCards: function(boardId) {
         // retrieves cards and makes showCards called
