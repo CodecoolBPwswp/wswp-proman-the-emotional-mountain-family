@@ -18,7 +18,7 @@ export let dataHandler = {
     },
     init: function() {
         this._loadData();
-        upload.uploadData()
+        //upload.uploadData()
     },
     getBoards: function(callback) {
         // the boards are retrieved and then the callback function is called with the boards
@@ -35,15 +35,32 @@ export let dataHandler = {
     },
     getStatuses: function(callback) {
         // the statuses are retrieved and then the callback function is called with the statuses
+        let statuses = dataHandler._data.statuses;
+        callback(statuses);
     },
     getStatus: function(statusId, callback) {
         // the status is retrieved and then the callback function is called with the status
+        let statuses = dataHandler._data.statuses;
+        for (let status of statuses) {
+            if (statusId === status.id)
+                callback(status)
+        }
     },
     getCardsByBoardId: function(boardId, callback) {
         // the cards are retrieved and then the callback function is called with the cards
+        let cards = dataHandler._data.cards;
+        for (let card of cards) {
+            if (boardId === card.board_id)
+                callback(card)
+        }
     },
     getCard: function(cardId, callback) {
         // the card is retrieved and then the callback function is called with the card
+        let cards = dataHandler._data.cards;
+        for (let card of cards) {
+            if (cardId === card.id)
+                callback(card)
+        }
     },
     createNewBoard: function(boardTitle, callback) {
         // creates new board, saves it and calls the callback function with its data
