@@ -1,51 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>ProMan</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ProMan</title>
 
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
-        <script type="module" src="{{ url_for('static', filename='js/handlebar.js') }}" defer></script>
-        <script type="module" src="{{ url_for('static', filename='js/main.js') }}" defer></script>
-    </head>
-    <body>
-        <h1>ProMan</h1>
-        {% raw %}
-        <div class="container" id="boardtemplate">
-              <div class="board">
-                  {{ boardid }}
-                <div class="col">
-                  New
+    <script src="{{ url_for('static', filename='js/handlebar.js') }}" defer></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script type="module" src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body>
+<h1>ProMan</h1>
+<script id="handletest" type="text/x-handlebars-template">
+{% raw %}
+<div class="container" id="boards">
+    <div class="board-header" id="board">
+        <h5 class="mb-0">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#{{ boardId }}"
+                    aria-expanded="true" aria-controls="{{ boardId }}">
+                {{ boardTitle }}
+            </button>
+        </h5>
+    </div>
+    <div id="{{ boardId }}" class="collapse show" aria-labelledby="{{ boardId }}" data-parent="#boards">
+        <div class="card-body">
+            <div class="row">
+                <div class="field new">
+                        NEW
                 </div>
-                <div class="col">
-                  In progress
+                <div class="field in_progress">
+                    PROGRESSYAY
                 </div>
-                <div class="col">
-                  Testing
+                <div class="field testing">
+                    TESTALLTHETHINGS
                 </div>
-                <div class="col">
-                  Done
+                <div class="field done">
+                    SODONE
                 </div>
-              </div>
-               <div class="board">
-                <div class="col">
-                  New
+            </div>
+            <div class="row">
+                <div class="field new">
+                    Card1
                 </div>
-                <div class="col">
-                  In progress
+                <div class="field in_progress">
+                    Card2
                 </div>
-                <div class="col">
-                  Testing
+                <div class="field testing">
+                    Card3
                 </div>
-                <div class="col">
-                  Done
+                <div class="field done">
+                    Card4
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endraw %}
+</script>
+<div id="loadforbear"></div>
+</body>
 
-              </div>
-        </div
-            <div id="loadboard"></div>
-            {% endraw %}
-    </body>
 </html>
+
