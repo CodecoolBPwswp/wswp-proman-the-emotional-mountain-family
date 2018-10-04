@@ -18,8 +18,7 @@ export let dom = {
     loadBoards: function() {
         // retrieves boards and makes showBoards called
         dataHandler.getBoards(dom.showBoards);
-        dom.initModals();
-        dataHandler.getBoard(dom.showBoard);
+
 
     },
     showBoards: function(boards) {
@@ -32,6 +31,7 @@ export let dom = {
             let html = templateScript(context);
             document.getElementById("loadforbear").innerHTML += html;
         }
+        dom.initModals();
     },
 
     showBoard: function(board) {

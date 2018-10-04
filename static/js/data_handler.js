@@ -15,7 +15,7 @@ export let dataHandler = {
     _saveData: function() {
         // it is not called from outside
         // saves the data from this._data to local storage
-        dataHandler._data = localStorage.setItem(dataHandler.keyInLocalStorage, JSON.stringify(this._data));
+        localStorage.setItem(dataHandler.keyInLocalStorage, JSON.stringify(this._data));
     },
     init: function() {
         this._loadData();
@@ -50,14 +50,11 @@ export let dataHandler = {
         //create new board object +
         //save obj into _data
         //call savedData funct.
-        let counter =  0;
-        let savedBoards = dataHandler._loadData();
-        for (let board of savedBoards) {
-            var newBoardId = counter++
-        }
+        let newBoardId = dataHandler._data.boards.length;
 
-
-        let board = {"id": newBoardId, "title": boardTitle, "is_active": true};
+        let board = {"id": (newBoardId + 1), "title": boardTitle, "is_active": true};
+        dataHandler._data.boards.push(board);
+        this._saveData();
         callback(board)
     },
     createNewCard: function(cardTitle, boardId, statusId, callback) {

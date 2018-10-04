@@ -46,7 +46,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button"  class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" id="saveNewBoard" class="btn btn-primary">Save changes</button>
+                    <button type="button" id="saveNewBoard" data-dismiss="modal" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>
@@ -59,13 +59,13 @@
     <div class="container" id="boards">
         <div class="board-header" id="board">
             <h5 class="mb-0">
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#{{ boardId }}"
-                        aria-expanded="true" aria-controls="{{ boardId }}">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#{{ boardId }}"
+                        aria-expanded="false" aria-controls="{{ boardId }}">
                     {{ boardTitle }}
                 </button>
             </h5>
         </div>
-        <div id="{{ boardId }}" class="collapse show" aria-labelledby="{{ boardId }}" data-parent="#boards">
+        <div id="{{ boardId }}" class="collapse" aria-labelledby="{{ boardId }}" data-parent="#boards">
             <div class="card-body">
                 <div class="row">
                     <div class="field new">
