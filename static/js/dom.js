@@ -13,10 +13,10 @@ export let dom = {
     showBoards: function(boards) {
         // shows boards appending them to #boards div
         // it adds necessary event listeners also
-        let template = document.getElementById("handletest").innerHTML;
+        let template = document.getElementById("boards").innerHTML;
         let templateScript = Handlebars.compile(template);
         for (let board of boards) {
-            let context = {"boardId": board.id, "boardTitle": board.title};
+            let context = {"boardId" : board.id, "boardTitle": board.title};
             let html = templateScript(context);
         document.getElementById("loadforbear").innerHTML += html;
         }
