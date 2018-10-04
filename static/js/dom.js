@@ -2,15 +2,24 @@
 import { dataHandler } from "./data_handler.js";
 
 export let dom = {
+
     init: function() {
         dataHandler.init();
     },
     loadBoards: function() {
         // retrieves boards and makes showBoards called
+    dataHandler.getBoards(dom.showBoards);
     },
     showBoards: function(boards) {
         // shows boards appending them to #boards div
         // it adds necessary event listeners also
+        let template = document.getElementById("boards").innerHTML;
+        let templateScript = Handlebars.compile(template);
+        for (let board of boards) {
+            let context = {"boardId" : board.id, "boardTitle": board.title};
+            let html = templateScript(context);
+        document.getElementById("loadforbear").innerHTML += html;
+        }
     },
     loadCards: function(boardId) {
         // retrieves cards and makes showCards called
