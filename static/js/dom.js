@@ -50,12 +50,14 @@ export let dom = {
     showCards: function (cards) {
         // shows the cards of a board
         // it adds necessary event listeners also
+
         for (let card of cards) {
             let boardID = card.board_id;
             let statusId = card.status_id;
             let progress1 = document.getElementById('new-' + boardID);
             let newField = Number(progress1.dataset.order);
             if (statusId === newField){
+                document.getElementById('new-' + boardID).style.visibility='visible';
                 let newCard = document.createElement('p');
                 let cardTitle = document.createTextNode(card.title);
                 newCard.appendChild(cardTitle);
@@ -64,6 +66,7 @@ export let dom = {
             let progress2 = document.getElementById('inprog-' + boardID);
             let inProgField = Number(progress2.dataset.order);
             if (statusId === inProgField){
+                document.getElementById('inprog-' + boardID).style.visibility='visible';
                 let newCard = document.createElement('p');
                 let cardTitle = document.createTextNode(card.title);
                 newCard.appendChild(cardTitle);
@@ -72,6 +75,7 @@ export let dom = {
             let progress3 = document.getElementById('test-' + boardID);
             let testField = Number(progress3.dataset.order);
             if (statusId === testField){
+                document.getElementById('test-' + boardID).style.visibility='visible';
                 let newCard = document.createElement('p');
                 let cardTitle = document.createTextNode(card.title);
                 newCard.appendChild(cardTitle);
@@ -80,6 +84,7 @@ export let dom = {
             let progress4 = document.getElementById('done-' + boardID);
             let doneField = Number(progress4.dataset.order);
             if (statusId === doneField){
+                document.getElementById('done-' + boardID).style.visibility='visible';
                 let newCard = document.createElement('p');
                 let cardTitle = document.createTextNode(card.title);
                 newCard.appendChild(cardTitle);

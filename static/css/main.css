@@ -6,6 +6,7 @@
     justify-content: space-around;
     align-items: baseline;
     border-radius: 10px;
+    padding: 3%;
 }
 
 .header_row {
@@ -18,15 +19,13 @@
 }
 
 .field {
-    padding: 3%;
-    border: 1px solid black;
-    border-radius: 10px;
-    background-color: white;
-}
-
-.field {
-    border: none;
     background-color: #EE7752;
+    text-align: center;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    visibility: hidden;
+
 }
 
 
