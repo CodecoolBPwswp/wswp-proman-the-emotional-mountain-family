@@ -1,5 +1,5 @@
 .row {
-    background-color: sandybrown;
+    background-color: #817e7e;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -16,20 +16,31 @@
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: baseline;
+    color: #000000;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: capitalize;
 }
 
 .field {
-    background-color: #EE7752;
+    background-color: #676565;
     text-align: center;
     border-radius: 5px;
     margin-left: 10px;
     margin-right: 10px;
     visibility: hidden;
-
+    color: #eeeeee;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: capitalize;
 }
 
-
-
+.task {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
 
 .container {
     background-image: linear-gradient(to bottom right, grey, white);
@@ -37,52 +48,51 @@
 
 }
 
-
 body {
-	width: 100wh;
-	height: 90vh;
-	color: #fff;
-	background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
-	background-size: 400% 400%;
-	-webkit-animation: Gradient 15s ease infinite;
-	-moz-animation: Gradient 15s ease infinite;
-	animation: Gradient 15s ease infinite;
+    width: 100 wh;
+    height: 90vh;
+    color: #fff;
+    background: linear-gradient(-45deg, rgba(177, 91, 64, 0.82), rgba(153, 41, 66, 0.87), rgba(32, 104, 146, 0.88), rgba(6, 128, 115, 0.89));
+    background-size: 400% 400%;
+    -webkit-animation: Gradient 15s ease infinite;
+    -moz-animation: Gradient 15s ease infinite;
+    animation: Gradient 15s ease infinite;
 }
 
 @-webkit-keyframes Gradient {
-	0% {
-		background-position: 0% 50%
-	}
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
 }
 
 @-moz-keyframes Gradient {
-	0% {
-		background-position: 0% 50%
-	}
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
 }
 
 @keyframes Gradient {
-	0% {
-		background-position: 0% 50%
-	}
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
 }
 
 /*
