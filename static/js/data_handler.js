@@ -1,4 +1,4 @@
-import { upload } from "./sample_data.js";
+
 // this object contains the functions which handle the data and its reading/writing
 // feel free to extend and change to fit your needs
 
@@ -15,10 +15,10 @@ export let dataHandler = {
     _saveData: function() {
         // it is not called from outside
         // saves the data from this._data to local storage
+        localStorage.setItem(dataHandler.keyInLocalStorage, JSON.stringify(this._data));
     },
     init: function() {
         this._loadData();
-        upload.uploadData()
     },
     getBoards: function(callback) {
         // the boards are retrieved and then the callback function is called with the boards
@@ -47,6 +47,15 @@ export let dataHandler = {
     },
     createNewBoard: function(boardTitle, callback) {
         // creates new board, saves it and calls the callback function with its data
+        //create new board object +
+        //save obj into _data
+        //call savedData funct.
+        let newBoardId = dataHandler._data.boards.length;
+
+        let board = {"id": (newBoardId + 1), "title": boardTitle, "is_active": true};
+        dataHandler._data.boards.push(board);
+        this._saveData();
+        callback(board)
     },
     createNewCard: function(cardTitle, boardId, statusId, callback) {
         // creates new card, saves it and calls the callback function with its data

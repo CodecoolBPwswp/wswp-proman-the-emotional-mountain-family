@@ -6,9 +6,20 @@ export let dom = {
     init: function() {
         dataHandler.init();
     },
+    initModals: function() {
+        let button = document.getElementById("saveNewBoard");
+        button.addEventListener('click', function () {
+            let newBoard = document.getElementById("newBoardTitle");
+            let newBoardTitle = newBoard.value;
+            dataHandler.createNewBoard(newBoardTitle, dom.showBoard)
+        });
+    },
+
     loadBoards: function() {
         // retrieves boards and makes showBoards called
-    dataHandler.getBoards(dom.showBoards);
+        dataHandler.getBoards(dom.showBoards);
+
+
     },
     showBoards: function(boards) {
         // shows boards appending them to #boards div
@@ -18,9 +29,19 @@ export let dom = {
         for (let board of boards) {
             let context = {"boardId" : board.id, "boardTitle": board.title};
             let html = templateScript(context);
-        document.getElementById("loadforbear").innerHTML += html;
+            document.getElementById("loadforbear").innerHTML += html;
         }
+        dom.initModals();
     },
+
+    showBoard: function(board) {
+        let template = document.getElementById("handletest").innerHTML;
+        let templateScript = Handlebars.compile(template);
+        let context = {"boardId" : board.id, "boardTitle": board.title};
+        let html = templateScript(context);
+        document.getElementById("loadforbear").innerHTML += html;
+    },
+
     loadCards: function(boardId) {
         // retrieves cards and makes showCards called
     },

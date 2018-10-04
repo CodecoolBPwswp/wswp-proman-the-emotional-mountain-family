@@ -8,59 +8,97 @@
 
     <script src="{{ url_for('static', filename='js/handlebar.js') }}" defer></script>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script type="module" src="{{ url_for('static', filename='js/main.js') }}" defer></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
 </head>
 <body>
 <h1>ProMan</h1>
-<script id="handletest" type="text/x-handlebars-template">
-{% raw %}
-<div class="container" id="boards">
-    <div class="board-header" id="board">
-        <h5 class="mb-0">
-            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#{{ boardId }}"
-                    aria-expanded="true" aria-controls="{{ boardId }}">
-                {{ boardTitle }}
-            </button>
-        </h5>
-    </div>
-    <div id="{{ boardId }}" class="collapse show" aria-labelledby="{{ boardId }}" data-parent="#boards">
-        <div class="card-body">
-            <div class="row">
-                <div class="field new">
-                        NEW
-                </div>
-                <div class="field in_progress">
-                    PROGRESSYAY
-                </div>
-                <div class="field testing">
-                    TESTALLTHETHINGS
-                </div>
-                <div class="field done">
-                    SODONE
-                </div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Add new board
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <div class="row">
-                <div class="field new">
-                    Card1
+            <div>
+                <div class="modal-body">
+                    boardsies: <input type="text" name="newboard" id="newBoardTitle"><br>
                 </div>
-                <div class="field in_progress">
-                    Card2
-                </div>
-                <div class="field testing">
-                    Card3
-                </div>
-                <div class="field done">
-                    Card4
+                <div class="modal-footer">
+                    <button type="button"  class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" id="saveNewBoard" data-dismiss="modal" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-{% endraw %}
+
+<script id="handletest" type="text/x-handlebars-template">
+    {% raw %}
+
+    <div class="container" id="boards">
+        <div class="board-header" id="board">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#{{ boardId }}"
+                        aria-expanded="false" aria-controls="{{ boardId }}">
+                    {{ boardTitle }}
+                </button>
+            </h5>
+        </div>
+        <div id="{{ boardId }}" class="collapse" aria-labelledby="{{ boardId }}" data-parent="#boards">
+            <div class="card-body">
+                <div class="header_row">
+                    <div class="fieldh new">
+                        New
+                    </div>
+                    <div class="fieldh in_progress">
+                        In-progress
+                    </div>
+                    <div class="fieldh testing">
+                        Testing
+                    </div>
+                    <div class="fieldh done">
+                        Done
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="field new">
+                        Card1
+                    </div>
+                    <div class="field in_progress">
+                        Card2
+                    </div>
+                    <div class="field testing">
+                        Card3
+                    </div>
+                    <div class="field done">
+                        Card4
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endraw %}
 </script>
 <div id="loadforbear"></div>
 </body>
