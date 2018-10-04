@@ -45,8 +45,9 @@
                     Enter the title for your new board: <input type="text" name="newboard" id="newBoardTitle"><br>
                 </div>
                 <div class="modal-footer">
-                    <button type="button"  class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" id="saveNewBoard" data-dismiss="modal" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" id="saveNewBoard" data-dismiss="modal" class="btn btn-primary">Save changes
+                    </button>
                 </div>
             </div>
         </div>
@@ -56,8 +57,8 @@
 <script id="handletest" type="text/x-handlebars-template">
     {% raw %}
 
-    <div class="container" id="boards">
-        <div class="board-header" id="board">
+    <div class="container" id="board-{{ boardId }}">
+        <div class="board-header">
             <h5 class="mb-0">
                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#{{ boardId }}"
                         aria-expanded="false" aria-controls="{{ boardId }}">
@@ -65,7 +66,7 @@
                 </button>
             </h5>
         </div>
-        <div id="{{ boardId }}" class="collapse" aria-labelledby="{{ boardId }}" data-parent="#{{ boardId }}">
+        <div id="{{ boardId }}" class="collapse" aria-labelledby="{{ boardId }}">
             <div class="card-body">
                 <div class="header_row">
                     <div class="fieldh new">
@@ -82,18 +83,10 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="field new">
-                        Card1
-                    </div>
-                    <div class="field in_progress">
-                        Card2
-                    </div>
-                    <div class="field testing">
-                        Card3
-                    </div>
-                    <div class="field done">
-                        Card4
-                    </div>
+                    <div class="field new" data-order="1" id="new-{{ boardId }}"></div>
+                    <div class="field in_progress" data-order="2" id="inprog-{{ boardId }}"></div>
+                    <div class="field testing" data-order="3" id="test-{{ boardId }}"></div>
+                    <div class="field done" data-order="4" id="done-{{ boardId }}"></div>
                 </div>
             </div>
         </div>
