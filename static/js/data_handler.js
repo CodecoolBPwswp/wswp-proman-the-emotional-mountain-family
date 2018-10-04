@@ -41,6 +41,13 @@ export let dataHandler = {
     },
     getCardsByBoardId: function(boardId, callback) {
         // the cards are retrieved and then the callback function is called with the cards
+        let cards = dataHandler._data.cards;
+        var cardsByTable = [];
+        for( let card of cards){
+            if (boardId === card.board_id)
+                cardsByTable.push(card);
+        }
+        callback(cardsByTable)
     },
     getCard: function(cardId, callback) {
         // the card is retrieved and then the callback function is called with the card
@@ -51,7 +58,6 @@ export let dataHandler = {
         //save obj into _data
         //call savedData funct.
         let newBoardId = dataHandler._data.boards.length;
-
         let board = {"id": (newBoardId + 1), "title": boardTitle, "is_active": true};
         dataHandler._data.boards.push(board);
         this._saveData();

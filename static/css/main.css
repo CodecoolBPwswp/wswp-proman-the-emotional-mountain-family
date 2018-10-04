@@ -32,7 +32,7 @@
 
 
 
-#boards {
+.container {
     background-image: linear-gradient(to bottom right, grey, white);
     border-radius: 10px;
 
