@@ -28,11 +28,15 @@
     border-radius: 5px;
     margin-left: 10px;
     margin-right: 10px;
-    visibility: hidden;
     color: #eeeeee;
     font-size: 15px;
     font-weight: bold;
     text-transform: capitalize;
+}
+
+.divContainer {
+    min-height: 50px;
+
 }
 
 .task {

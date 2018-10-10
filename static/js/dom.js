@@ -19,19 +19,16 @@ export let dom = {
         // retrieves boards and makes showBoards called
         dataHandler.getBoards(dom.showBoards);
 
-
     },
     showBoards: function (boards) {
         // shows boards appending them to #boards div
         // it adds necessary event listeners also
-        let template = document.getElementById("handletest").innerHTML;
-        let templateScript = Handlebars.compile(template);
         for (let board of boards) {
-            let context = {"boardId": board.id, "boardTitle": board.title};
-            let html = templateScript(context);
-            document.getElementById("loadforbear").innerHTML += html;
-            dom.loadCards(board.id)
+            dom.showBoard(board);
+            dom.loadCards(board.id);
         }
+        let dropable = Array.from(document.getElementsByClassName('divContainer'));
+        dragula(dropable);
         dom.initModals();
     },
 
@@ -51,53 +48,27 @@ export let dom = {
         // shows the cards of a board
         // it adds necessary event listeners also
 
+        function cardToTable(boardID, statusId, classname, card) {
+            let progress1 = document.getElementById(classname + boardID);
+            let newField = Number(progress1.dataset.order);
+            if (statusId === newField) {
+                //document.getElementById('new-' + boardID).style.visibility = 'visible';
+                let newCard = document.createElement('div');
+                newCard.className = 'task';
+                let cardTitle = document.createTextNode(card.title);
+                newCard.appendChild(cardTitle);
+                let element = document.getElementById(classname + boardID);
+                element.appendChild(newCard);
+            }
+        }
+
         for (let card of cards) {
             let boardID = card.board_id;
             let statusId = card.status_id;
-            let progress1 = document.getElementById('new-' + boardID);
-            let newField = Number(progress1.dataset.order);
-            if (statusId === newField) {
-                document.getElementById('new-' + boardID).style.visibility = 'visible';
-                let newCard = document.createElement('div');
-                newCard.className = 'task';
-                let cardTitle = document.createTextNode(card.title);
-                newCard.appendChild(cardTitle);
-                let element = document.getElementById('new-' + boardID);
-                element.appendChild(newCard);
-            }
-            let progress2 = document.getElementById('inprog-' + boardID);
-            let inProgField = Number(progress2.dataset.order);
-            if (statusId === inProgField) {
-                document.getElementById('inprog-' + boardID).style.visibility = 'visible';
-                let newCard = document.createElement('div');
-                newCard.className = 'task';
-                let cardTitle = document.createTextNode(card.title);
-                newCard.appendChild(cardTitle);
-                let element = document.getElementById('inprog-' + boardID);
-                element.appendChild(newCard);
-            }
-            let progress3 = document.getElementById('test-' + boardID);
-            let testField = Number(progress3.dataset.order);
-            if (statusId === testField) {
-                document.getElementById('test-' + boardID).style.visibility = 'visible';
-                let newCard = document.createElement('div');
-                newCard.className = 'task';
-                let cardTitle = document.createTextNode(card.title);
-                newCard.appendChild(cardTitle);
-                let element = document.getElementById('test-' + boardID);
-                element.appendChild(newCard);
-            }
-            let progress4 = document.getElementById('done-' + boardID);
-            let doneField = Number(progress4.dataset.order);
-            if (statusId === doneField) {
-                document.getElementById('done-' + boardID).style.visibility = 'visible';
-                let newCard = document.createElement('div');
-                newCard.className = 'task';
-                let cardTitle = document.createTextNode(card.title);
-                newCard.appendChild(cardTitle);
-                let element = document.getElementById('done-' + boardID);
-                element.appendChild(newCard);
-            }
+            cardToTable(boardID, statusId, 'new-', card);
+            cardToTable(boardID, statusId, 'inprog-', card);
+            cardToTable(boardID, statusId, 'test-', card);
+            cardToTable(boardID, statusId, 'done-', card);
         }
     },
     appendToElement: function (elementToExtend, textToAppend, prepend = false) {

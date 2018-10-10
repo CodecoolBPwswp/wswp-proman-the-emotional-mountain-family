@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ProMan</title>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.css"/>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.js' defer></script>
     <script src="{{ url_for('static', filename='js/handlebar.js') }}" defer></script>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -68,25 +69,31 @@
         </div>
         <div id="{{ boardId }}" class="collapse" aria-labelledby="{{ boardId }}">
             <div class="card-body">
-                <div class="header_row">
-                    <div class="fieldh new">
-                        New
-                    </div>
-                    <div class="fieldh in_progress">
-                        In-progress
-                    </div>
-                    <div class="fieldh testing">
-                        Testing
-                    </div>
-                    <div class="fieldh done">
-                        Done
-                    </div>
-                </div>
                 <div class="row">
-                    <div class="field new col" data-order="1" id="new-{{ boardId }}"></div>
-                    <div class="field in_progress col" data-order="2" id="inprog-{{ boardId }}"></div>
-                    <div class="field testing col" data-order="3" id="test-{{ boardId }}"></div>
-                    <div class="field done col" data-order="4" id="done-{{ boardId }}"></div>
+                    <div class="new">
+                        <div class="header_row">New</div>
+                        <div class="divContainer">
+                            <div class="field" data-order="1" id="new-{{ boardId }}"></div>
+                        </div>
+                    </div>
+                    <div class="in_progress">
+                        <div class="header_row">In-progress</div>
+                        <div class="divContainer">
+                            <div class="field" data-order="2" id="inprog-{{ boardId }}"></div>
+                        </div>
+                    </div>
+                    <div class="testing">
+                        <div class="header_row">Testing</div>
+                        <div class="divContainer">
+                            <div class="field" data-order="3" id="test-{{ boardId }}"></div>
+                        </div>
+                    </div>
+                    <div class="done">
+                        <div class="header_row">Done</div>
+                        <div class="divContainer">
+                            <div class="field" data-order="4" id="done-{{ boardId }}"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
